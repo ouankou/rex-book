@@ -7,3 +7,4 @@
     - file: markdown
     - file: notebooks
     - file: build_rex.md
+    - file: decision_tree.ipynb
