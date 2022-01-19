@@ -1,4 +1,15 @@
 FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
+
+RUN \
+    apt update && \
+    apt install -y \
+        apt-utils \
+        dialog \
+        software-properties-common && \
+    apt install -y python3-pip && \
+    rm -rf /var/lib/apt/lists/* && \
+    rm -rf /var/cache/*
+
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
