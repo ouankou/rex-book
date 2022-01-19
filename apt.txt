@@ -1,4 +1,0 @@
-apt-utils
-clang
-g++
-libomp-dev
