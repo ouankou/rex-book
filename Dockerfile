@@ -1,4 +1,4 @@
-FROM cuda:11.6.0-devel-ubuntu20.04
+FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
