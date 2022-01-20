@@ -55,6 +55,9 @@ ARG NB_UID
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 
+COPY . ${HOME}
+RUN chown -R ${NB_UID} ${HOME}
+
 RUN adduser --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
@@ -63,9 +66,9 @@ WORKDIR ${HOME}
 USER ${USER}
 
 RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/apputils-extension && \
-    echo '{ "theme":"gruvbox-dark" }' > ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
+    echo '{ "theme":"gruvbox-dark" }' > ${HOME}/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
 
 RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/terminal-extension && \
-    echo '{ "fontSize": 16 }' > ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
+    echo '{ "fontSize": 16 }' > ${HOME}/.jupyter/lab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
 
 ENV SHELL /bin/bash
