@@ -3,6 +3,8 @@ FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
 ENV TZ=US/Eastern
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
+
 RUN \
     apt update && \
     apt install -y \
@@ -31,6 +33,7 @@ RUN \
         libtinfo-dev \
         libtool \
         ninja-build \
+        nodejs \
         npm \
         openjdk-8-jdk \
         vim \
@@ -42,6 +45,8 @@ RUN \
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
+    
+RUN jupyter labextension install @arbennett/base16-monokai
 
 # create user with a home directory
 ARG NB_USER=user
