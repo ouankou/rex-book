@@ -9,7 +9,8 @@ RUN \
         apt-utils \
         curl \
         dialog \
-        software-properties-common
+        software-properties-common \
+        wget
 
 RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
 
@@ -38,7 +39,6 @@ RUN \
         nodejs \
         openjdk-8-jdk \
         vim \
-        wget \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/*
@@ -62,10 +62,12 @@ RUN adduser --disabled-password \
 COPY . ${HOME}
 RUN chown -R ${NB_UID} ${HOME}
 WORKDIR ${HOME}
+RUN pip install -r ./requirements.txt
+
 USER ${USER}
 
 RUN mkdir -p ${HOME}/.jupyter/lab/user-settings/@jupyterlab/apputils-extension && \
-    echo '{ "theme":"gruvbox-dark" }' > ${HOME}/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
+    echo '{ "theme": "base16-gruvbox-dark" }' > ${HOME}/.jupyter/lab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
 
 RUN mkdir -p ${HOME}/.jupyter/lab/user-settings/@jupyterlab/terminal-extension && \
     echo '{ "fontSize": 16 }' > ${HOME}/.jupyter/lab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
