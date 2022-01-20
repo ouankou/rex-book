@@ -21,7 +21,6 @@ RUN \
         build-essential \
         clang \
         cmake \
-        curl \
         flex \
         g++ \
         gcc \
@@ -64,9 +63,9 @@ WORKDIR ${HOME}
 USER ${USER}
 
 RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/apputils-extension && \
-    echo '{ "theme":"gruvbox-dark" }' > themes.jupyterlab-settings
+    echo '{ "theme":"gruvbox-dark" }' > $_/themes.jupyterlab-settings
 
 RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/terminal-extension && \
-    echo '{ "fontSize": 16 }' > plugin.jupyterlab-settings
+    echo '{ "fontSize": 16 }' > $_/plugin.jupyterlab-settings
 
 ENV SHELL /bin/bash
