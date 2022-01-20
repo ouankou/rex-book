@@ -63,9 +63,9 @@ WORKDIR ${HOME}
 USER ${USER}
 
 RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/apputils-extension && \
-    echo '{ "theme":"gruvbox-dark" }' > $_/themes.jupyterlab-settings
+    echo '{ "theme":"gruvbox-dark" }' > ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/apputils-extension/themes.jupyterlab-settings
 
 RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/terminal-extension && \
-    echo '{ "fontSize": 16 }' > $_/plugin.jupyterlab-settings
+    echo '{ "fontSize": 16 }' > ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/terminal-extension/plugin.jupyterlab-settings
 
 ENV SHELL /bin/bash
