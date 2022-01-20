@@ -3,14 +3,17 @@ FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
 ENV TZ=US/Eastern
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
-
 RUN \
     apt update && \
     apt install -y \
         apt-utils \
+        curl \
         dialog \
-        software-properties-common && \
+        software-properties-common
+
+RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
+
+RUN \
     apt install -y python3-pip && \
     apt install -y \ 
         automake \
