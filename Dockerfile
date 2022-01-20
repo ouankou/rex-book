@@ -48,15 +48,11 @@ RUN \
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
     
-RUN jupyter labextension install @arbennett/base16-monokai && \
-    jupyter labextension install @arbennett/base16-mexico-light && \
-    jupyter labextension install @arbennett/base16-gruvbox-dark && \
-    jupyter labextension install @arbennett/base16-gruvbox-light && \
-    jupyter labextension install @arbennett/base16-outrun
+RUN jupyter labextension install @arbennett/base16-gruvbox-dark
 
 # create user with a home directory
-ARG NB_USER=user
-ARG NB_UID=1000
+ARG NB_USER
+ARG NB_UID
 ENV USER ${NB_USER}
 ENV HOME /home/${NB_USER}
 
@@ -67,7 +63,10 @@ RUN adduser --disabled-password \
 WORKDIR ${HOME}
 USER ${USER}
 
-RUN mkdir -p ${HOME}/.jupyterlab/user-settings/@jupyterlab/apputils-extension/ && \
-    echo '{ "theme":"base16-mexico-light" }' > themes.jupyterlab-settings
+RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/apputils-extension && \
+    echo '{ "theme":"gruvbox-dark" }' > themes.jupyterlab-settings
+
+RUN mkdir -p ${HOME}/.jupyter/lab/jupyterlab/user-settings/@jupyterlab/terminal-extension && \
+    echo '{ "fontSize": 16 }' > plugin.jupyterlab-settings
 
 ENV SHELL /bin/bash
