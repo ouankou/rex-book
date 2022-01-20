@@ -31,6 +31,7 @@ RUN \
         libtinfo-dev \
         libtool \
         ninja-build \
+        npm \
         openjdk-8-jdk \
         vim \
         wget \
@@ -41,6 +42,8 @@ RUN \
 # install the notebook package
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
+
+RUN jupyter labextension install @arbennett/base16-monokai
 
 # create user with a home directory
 ARG NB_USER=user
