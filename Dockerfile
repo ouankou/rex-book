@@ -48,7 +48,11 @@ RUN \
 RUN pip install --no-cache --upgrade pip && \
     pip install --no-cache notebook jupyterlab
     
-RUN jupyter labextension install @arbennett/base16-monokai
+RUN jupyter labextension install @arbennett/base16-monokai && \
+    jupyter labextension install @arbennett/base16-mexico-light && \
+    jupyter labextension install @arbennett/base16-gruvbox-dark && \
+    jupyter labextension install @arbennett/base16-gruvbox-light && \
+    jupyter labextension install @arbennett/base16-outrun
 
 # create user with a home directory
 ARG NB_USER=user
@@ -62,5 +66,8 @@ RUN adduser --disabled-password \
     ${NB_USER}
 WORKDIR ${HOME}
 USER ${USER}
+
+RUN mkdir -p ${HOME}/.jupyterlab/user-settings/@jupyterlab/apputils-extension/ && \
+    echo '{ "theme":"base16-mexico-light" }' > themes.jupyterlab-settings
 
 ENV SHELL /bin/bash
