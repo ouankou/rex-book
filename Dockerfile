@@ -1,5 +1,8 @@
 FROM nvidia/cuda:11.6.0-devel-ubuntu20.04
 
+ENV TZ=US/Eastern
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 RUN \
     apt update && \
     apt install -y \
