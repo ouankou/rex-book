@@ -37,7 +37,6 @@ RUN \
         libtool \
         ninja-build \
         nodejs \
-        npm \
         openjdk-8-jdk \
         vim \
         wget \
