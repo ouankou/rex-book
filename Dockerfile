@@ -10,6 +10,31 @@ RUN \
         dialog \
         software-properties-common && \
     apt install -y python3-pip && \
+    apt install -y \ 
+        automake \
+        bison \
+        build-essential \
+        clang \
+        cmake \
+        curl \
+        flex \
+        g++ \
+        gcc \
+        gcc-multilib \
+        gdb \
+        gfortran \
+        ghostscript \
+        git \
+        graphviz \
+        libboost-all-dev \
+        libomp-dev \
+        libtinfo-dev \
+        libtool \
+        ninja-build \
+        openjdk-8-jdk \
+        vim \
+        wget \
+        zlib1g-dev && \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /var/cache/*
 
@@ -29,3 +54,5 @@ RUN adduser --disabled-password \
     ${NB_USER}
 WORKDIR ${HOME}
 USER ${USER}
+
+ENV SHELL /bin/bash
