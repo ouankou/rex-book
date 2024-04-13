@@ -423,7 +423,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -439,6 +441,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openmp-gpu-offloading">OpenMP GPU Offloading</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -450,6 +460,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="openmp-code">
 <h1>OpenMP Code<a class="headerlink" href="#openmp-code" title="Link to this heading">#</a></h1>
+<section id="openmp-gpu-offloading">
+<h2>OpenMP GPU Offloading<a class="headerlink" href="#openmp-gpu-offloading" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//%compiler: clang</span>
@@ -483,6 +495,7 @@ Hello World on GPU: 1
 </div>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -540,7 +553,20 @@ Hello World on GPU: 1
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#openmp-gpu-offloading">OpenMP GPU Offloading</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
