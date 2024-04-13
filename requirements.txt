@@ -1,6 +1,7 @@
 jupyter-book
 matplotlib
+nbgitpuller
 numpy
 pandas
-sklearn
+scikit-learn
 jupyter-native-kernel
