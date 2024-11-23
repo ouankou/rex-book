@@ -1,6 +1,6 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
-ENV TZ=US/Eastern
+ENV TZ=US/Los_Angeles
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN \
@@ -12,7 +12,7 @@ RUN \
         software-properties-common \
         wget
 
-RUN curl -fsSL https://deb.nodesource.com/setup_17.x | bash -
+RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 
 RUN \
     apt install -y python3-pip && \
@@ -37,7 +37,7 @@ RUN \
         libtool \
         ninja-build \
         nodejs \
-        openjdk-8-jdk \
+        openjdk-11-jdk \
         vim \
         zlib1g-dev && \
     rm -rf /var/lib/apt/lists/* && \
